@@ -1,0 +1,14 @@
+[project]
+name = "llm-foundation-blu1606"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "anthropic>=0.5.0",
+    "google-genai>=0.1.0",
+    "google-generativeai>=0.3.0",
+    "openai>=1.0.0",
+    "pytest>=7.0.0",
+    "python-dotenv>=1.2.2",
+]
