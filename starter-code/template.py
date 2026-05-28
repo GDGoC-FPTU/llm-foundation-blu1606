@@ -418,26 +418,11 @@ def batch_compare(prompts: list[str]) -> list[dict]:
     import inspect
     results = []
     for prompt in prompts:
-        # Tự động phát hiện nếu bài test mock sai signature (0 đối số) để tránh lỗi TypeError
-        use_no_args = False
-        if hasattr(compare_models, "side_effect"):
-            side_effect = getattr(compare_models, "side_effect", None)
-            if side_effect and callable(side_effect):
-                try:
-                    sig = inspect.signature(side_effect)
-                    if len(sig.parameters) == 0:
-                        use_no_args = True
-                except Exception:
-                    pass
-
-        if use_no_args:
-            res = compare_models()
-        else:
-            res = compare_models(prompt)
-
+        res = compare_models(prompt)
         res["prompt"] = prompt
         results.append(res)
     return results
+
 
 
 # ---------------------------------------------------------------------------
